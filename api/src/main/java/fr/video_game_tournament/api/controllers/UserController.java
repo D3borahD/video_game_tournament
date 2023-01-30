@@ -16,8 +16,8 @@ public class UserController {
     private UserService userService;
 
     /**
-     * Read - Get all employees
-     * @return - An Iterable object of Employee full filled
+     * Read - Get all users
+     * @return - An Iterable object of User full filled
      */
     @GetMapping("/users")
     public Iterable<User> getUsers(){
@@ -25,13 +25,13 @@ public class UserController {
     }
 
     /**
-     * Create - Add a new employee
-     * @param user An object employee
-     * @return The employee object saved
+     * Create - Add a new user
+     * @param user An object user
+     * @return The user object saved
      */
     @PostMapping("/users")
     public User createUser(@RequestBody User user) {
-        return userService.addUser(user);
+        return userService.saveUser(user);
     }
 
     /**
@@ -51,10 +51,10 @@ public class UserController {
     }
 
     /**
-     * Update - Update an existing employee
-     * @param id - The id of the employee to update
-     * @param user - The employee object updated
-     * @return
+     * Update - Update an existing user
+     * @param id - The id of the user to update
+     * @param user - The user object updated
+     * @return current user
      */
     @PutMapping("/users/{id}")
     public User updateUser(@PathVariable("id") final Long id, @RequestBody User user) {
@@ -74,7 +74,7 @@ public class UserController {
             if (email != null) {
                 currentUser.setEmail(email);
             }
-            userService.addUser(currentUser);
+            userService.saveUser(currentUser);
             return currentUser;
         }
         else {
@@ -82,18 +82,13 @@ public class UserController {
         }
     }
 
-
-
-
     /**
-     * Delete - Delete an employee
-     * @param id - The id of the employee to delete
+     * Delete - Delete an user
+     * @param id - The id of the user to delete
      */
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable("id") final Long id){
         userService.deleteUser(id);
     }
-
-
 
 }
