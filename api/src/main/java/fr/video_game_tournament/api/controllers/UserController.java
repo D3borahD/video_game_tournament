@@ -40,7 +40,7 @@ public class UserController {
      * @return An User object full filled
      */
     @GetMapping("/users/{id}")
-    public User getUserById(@PathVariable("id") final Long id){
+    public User getUserById(@PathVariable("id") final int id){
         Optional<User> user = userService.getUserById(id);
         if(user.isPresent()){
             return user.get();
@@ -57,7 +57,7 @@ public class UserController {
      * @return current user
      */
     @PutMapping("/users/{id}")
-    public User updateUser(@PathVariable("id") final Long id, @RequestBody User user) {
+    public User updateUser(@PathVariable("id") final int id, @RequestBody User user) {
         Optional<User> u = userService.getUserById(id);
         if(u.isPresent()){
             User currentUser = u.get();
@@ -69,6 +69,10 @@ public class UserController {
             String lastname = user.getLastname();
             if (lastname != null) {
                 currentUser.setLastname(lastname);
+            }
+            String phoneNumber = user.getPhoneNumber();
+            if (phoneNumber != null) {
+                currentUser.setPhoneNumber(phoneNumber);
             }
             String email = user.getEmail();
             if (email != null) {
@@ -87,7 +91,7 @@ public class UserController {
      * @param id - The id of the user to delete
      */
     @DeleteMapping("/users/{id}")
-    public void deleteUser(@PathVariable("id") final Long id){
+    public void deleteUser(@PathVariable("id") final int id){
         userService.deleteUser(id);
     }
 

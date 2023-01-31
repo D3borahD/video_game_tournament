@@ -5,20 +5,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "conference")
+public class Conference {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String firstname;
-    private String lastname;
+    private String name;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @Column(name="user_id")
+    private int userId;
 
-    private String email;
-
+    private String description;
 
 }

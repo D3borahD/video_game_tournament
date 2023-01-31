@@ -5,11 +5,12 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "video_game")
-public class VideoGame {
+@Table(name="role")
+public class Role {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
+
 }

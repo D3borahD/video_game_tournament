@@ -19,11 +19,11 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public Optional<User> getUserById(final Long id) {
+    public Optional<User> getUserById(final int id) {
         return userRepository.findById(id);
     }
 
-    public void deleteUser(final Long id) {
+    public void deleteUser(final int id) {
         userRepository.deleteById(id);
     }
 

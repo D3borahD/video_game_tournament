@@ -3,6 +3,7 @@ package fr.video_game_tournament.api.controllers;
 import fr.video_game_tournament.api.models.VideoGame;
 import fr.video_game_tournament.api.services.VideoGameService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -19,6 +20,8 @@ public class VideoGameController {
      * @return The videoGame object saved
      */
      @PostMapping("video_games")
+     @ResponseStatus(code = HttpStatus.CREATED, reason = "created a new resource")
+     //@ResponseStatus(code = HttpStatus.CREATED)
       public VideoGame createVideoGame(@RequestBody VideoGame videoGame){
         return videoGameService.saveVideoGame(videoGame);
       }
@@ -28,6 +31,8 @@ public class VideoGameController {
      * @return - An Iterable object of Video full filled
      */
      @GetMapping("video_games")
+    // @ResponseStatus(code = HttpStatus.OK, reason = "OK")
+     @ResponseStatus(code = HttpStatus.OK)
      public Iterable<VideoGame> getVideoGames(){
         return videoGameService.getVideoGames();
      }
@@ -38,7 +43,8 @@ public class VideoGameController {
      * @return A VideoGame object full filled
      */
      @GetMapping("video_games/{id}")
-     public VideoGame getVideoGameById(@PathVariable("id") final Long id) {
+     @ResponseStatus(code = HttpStatus.OK)
+     public VideoGame getVideoGameById(@PathVariable("id") final int id) {
          Optional<VideoGame> videoGame = videoGameService.getVideoGameById(id);
          if(videoGame.isPresent()){
              return videoGame.get();
@@ -55,7 +61,9 @@ public class VideoGameController {
      * @return current video game
      */
      @PutMapping("/video_games/{id}")
-     public VideoGame update(@PathVariable("id") final Long id, @RequestBody VideoGame videoGame){
+     //@ResponseStatus(code = HttpStatus.NO_CONTENT, reason = "resource updated successfully")
+     @ResponseStatus(code = HttpStatus.NO_CONTENT)
+     public VideoGame update(@PathVariable("id") final int id, @RequestBody VideoGame videoGame){
          Optional<VideoGame> v = videoGameService.getVideoGameById(id);
          if(v.isPresent()) {
              VideoGame currentVideoGame = v.get();
@@ -65,6 +73,7 @@ public class VideoGameController {
                  currentVideoGame.setName(name);
              }
              videoGameService.saveVideoGame(currentVideoGame);
+             //getReasonPhrase();
              return currentVideoGame;
          }
          else {
@@ -77,7 +86,8 @@ public class VideoGameController {
      * @param id - The id of the video game to delete
      */
     @DeleteMapping("/video_games/{id}")
-    public void deleteVideoGame(@PathVariable("id") final Long id){
+    @ResponseStatus(code = HttpStatus.ACCEPTED, reason = "resource deleted successfully")
+    public void deleteVideoGame(@PathVariable("id") final int id){
         videoGameService.deleteVideoGame(id);
     }
 

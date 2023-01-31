@@ -1,9 +1,9 @@
 package fr.video_game_tournament.api.repositories;
 
-import fr.video_game_tournament.api.models.User;
+import fr.video_game_tournament.api.models.Team;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface TeamRepository extends CrudRepository<Team, Integer> {
 }

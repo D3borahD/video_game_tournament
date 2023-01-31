@@ -15,7 +15,7 @@ public class VideoGameService {
     @Autowired
     private VideoGameRepository videoGameRepository;
 
-    public Optional<VideoGame> getVideoGameById(final Long id){
+    public Optional<VideoGame> getVideoGameById(final int id){
         return videoGameRepository.findById(id);
     }
 
@@ -23,7 +23,7 @@ public class VideoGameService {
         return videoGameRepository.findAll();
     }
 
-    public void deleteVideoGame(final Long id){
+    public void deleteVideoGame(final int id){
         videoGameRepository.deleteById(id);
     }
 
