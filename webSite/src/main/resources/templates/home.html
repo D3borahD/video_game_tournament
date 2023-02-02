@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Mon titre !!!!</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Prénom</th>
+        <th>Nom</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${#strings.isEmpty(users)}">
+        <td colspan="3">Aucun employée en base de données</td>
+    </tr>
+    <tr th:each="user: ${users}">
+        <td><span th:text="${user.firstname}"> Prénom </span></td>
+        <td><span th:text="${user.lastname}"> Nom </span></td>
+    </tr>
+    </tbody>
+</table>
+
+
+</body>
+</html>
