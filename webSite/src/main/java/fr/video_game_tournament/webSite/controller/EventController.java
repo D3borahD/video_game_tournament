@@ -61,7 +61,7 @@ public class EventController {
         service.saveEvent(newEvent);
         List<Event> events = (List<Event>) service.getEvents();
         model.addAttribute("events", events);
-        return "redirect:/";
+        return "redirect:/admin";
     }
 
 
