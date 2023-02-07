@@ -61,7 +61,6 @@ public class UserProxy {
         return response.getBody();
     }
 
-
     /**
      * Add a new user
      * @param u A new user (without an id)

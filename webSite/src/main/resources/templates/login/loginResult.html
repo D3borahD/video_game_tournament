@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" layout:decorate="layouts/defaultLayout" xmlns:layout="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="container" th:object="${event}" layout:fragment="content" >
+<p>Username : <span th:text="${name}"></span> </p>
+</div>
+<!--<p>Password :<span th:text="${password}"></span>  </p>-->
+
+</body>
+</html>

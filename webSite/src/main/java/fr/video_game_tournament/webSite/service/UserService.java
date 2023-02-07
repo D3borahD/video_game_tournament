@@ -17,28 +17,27 @@ public class UserService {
         return userProxy.getUser(id);
     }
 
-
     public Iterable<User> getUsers() {
         return userProxy.getUsers();
     }
 
-        public void deleteUser(final int id) {
-            userProxy.deleteUser(id);;
+    public void deleteUser(final int id) {
+        userProxy.deleteUser(id);;
+    }
+
+    public User saveUser(User user) {
+        User savedUser;
+
+        // Règle de gestion : Le nom de famille doit être mis en majuscule.
+        //user.setLastName(employee.getLastName().toUpperCase());
+
+        if(user.getId() == null) {
+            // Si l'id est nul, alors c'est un nouvel user.
+            savedUser = userProxy.createUser(user);
+        } else {
+            savedUser = userProxy.updateUser(user);
         }
 
-        public User saveUser(User user) {
-            User savedUser;
-
-            // Règle de gestion : Le nom de famille doit être mis en majuscule.
-            //user.setLastName(employee.getLastName().toUpperCase());
-
-            if(user.getId() == null) {
-                // Si l'id est nul, alors c'est un nouvel employé.
-                savedUser = userProxy.createUser(user);
-            } else {
-                savedUser = userProxy.updateUser(user);
-            }
-
-            return savedUser;
-        }
+        return savedUser;
+    }
 }
