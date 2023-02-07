@@ -1,8 +1,10 @@
 package fr.video_game_tournament.api.controllers;
 
 import fr.video_game_tournament.api.models.User;
+import fr.video_game_tournament.api.services.RoleService;
 import fr.video_game_tournament.api.services.UserService;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,7 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
 
     /**
      * Read - Get all users
@@ -70,6 +73,7 @@ public class UserController {
             if (lastname != null) {
                 currentUser.setLastname(lastname);
             }
+
             String phoneNumber = user.getPhoneNumber();
             if (phoneNumber != null) {
                 currentUser.setPhoneNumber(phoneNumber);
@@ -77,6 +81,14 @@ public class UserController {
             String email = user.getEmail();
             if (email != null) {
                 currentUser.setEmail(email);
+            }
+            String password = user.getPassword();
+            if (password != null) {
+                currentUser.setPassword(password);
+            }
+            String role = user.getRole();
+            if (role != null) {
+                currentUser.setRole(role);
             }
             userService.saveUser(currentUser);
             return currentUser;

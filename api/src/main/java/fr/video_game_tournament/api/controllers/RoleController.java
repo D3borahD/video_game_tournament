@@ -2,6 +2,7 @@ package fr.video_game_tournament.api.controllers;
 
 import fr.video_game_tournament.api.models.Role;
 import fr.video_game_tournament.api.services.RoleService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

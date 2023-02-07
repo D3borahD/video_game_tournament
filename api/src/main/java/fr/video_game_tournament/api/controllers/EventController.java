@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Optional;
 
 @RestController
@@ -70,9 +72,13 @@ public class EventController {
             if(name != null){
                 currentEvent.setName(name);
             }
-            LocalDateTime date = event.getDate();
+            LocalDate date = event.getDate();
             if(date != null){
                 currentEvent.setDate(date);
+            }
+            LocalTime time = event.getTime();
+            if(time != null){
+                currentEvent.setTime(time);
             }
             String address = event.getAddress();
             if(address != null){

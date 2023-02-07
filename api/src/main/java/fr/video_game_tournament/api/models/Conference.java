@@ -3,6 +3,10 @@ package fr.video_game_tournament.api.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "conference")
@@ -14,8 +18,7 @@ public class Conference {
 
     private String name;
 
-    @Column(name="user_id")
-    private int userId;
+    private LocalTime time;
 
     private String description;
 

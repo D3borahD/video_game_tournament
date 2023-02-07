@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalTime;
 import java.util.Optional;
 
 @RestController
@@ -70,10 +71,11 @@ public class ConferenceController {
             if(name != null){
                 currentConference.setName(name);
             }
-            int userId = conference.getUserId();
-            if(userId != 0){
-                currentConference.setUserId(userId);
+            LocalTime time = conference.getTime();
+            if(time != null){
+                currentConference.setTime(time);
             }
+
             String description = conference.getDescription();
             if(description != null){
                 currentConference.setDescription(description);
