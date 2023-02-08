@@ -32,4 +32,11 @@ public class Event {
     )
     @JoinColumn(name = "event_id")
     private List<Conference> conferences = new ArrayList<>();
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade={CascadeType.PERSIST}
+    )
+    @JoinColumn(name = "event_id")
+    private List<Competition> competitions = new ArrayList<>();
 }

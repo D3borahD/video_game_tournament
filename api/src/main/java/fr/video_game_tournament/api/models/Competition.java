@@ -13,4 +13,12 @@ public class Competition {
     private int id;
 
     private String name;
+
+    @Column(name="nb_player_by_team")
+    private int nbPlayerByTeam;
+    @Column(name="max_team")
+    private int maxTeam;
+
+    @Column(name="event_id")
+    private int eventId;
 }

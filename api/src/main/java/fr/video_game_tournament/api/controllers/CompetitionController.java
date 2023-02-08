@@ -68,6 +68,18 @@ public class CompetitionController {
             if(name != null){
                 currentCompetition.setName(name);
             }
+            int nbPlayerByTeam = competition.getNbPlayerByTeam();
+            if(nbPlayerByTeam != 0){
+                currentCompetition.setNbPlayerByTeam(nbPlayerByTeam);
+            }
+            int maxTeam = competition.getMaxTeam();
+            if(maxTeam != 0){
+                currentCompetition.setMaxTeam(maxTeam);
+            }
+            int eventId = competition.getEventId();
+            if(eventId != 0){
+                currentCompetition.setEventId(eventId);
+            }
             competitionService.saveCompetition(currentCompetition);
             return currentCompetition;
         }

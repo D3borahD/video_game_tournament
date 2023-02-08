@@ -80,6 +80,10 @@ public class ConferenceController {
             if(description != null){
                 currentConference.setDescription(description);
             }
+            int eventId = conference.getEventId();
+            if(eventId != 0){
+                currentConference.setEventId(eventId);
+            }
             conferenceService.saveConference(currentConference);
             return currentConference;
         }

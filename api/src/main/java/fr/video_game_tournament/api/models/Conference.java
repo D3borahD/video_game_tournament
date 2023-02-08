@@ -22,7 +22,8 @@ public class Conference {
 
     private String description;
 
-    private int event_id;
+   @Column(name="event_id")
+    private int eventId;
 
 
 }
