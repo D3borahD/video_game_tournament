@@ -18,6 +18,7 @@ public class Event {
     private String address;
 
     private List<Conference> conferences = new ArrayList<>();
+    private List<Competition> competitions = new ArrayList<>();
 
    /* public Event(Integer id, String name, String address) {
         this.id = id;

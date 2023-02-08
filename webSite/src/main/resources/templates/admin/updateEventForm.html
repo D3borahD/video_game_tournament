@@ -8,7 +8,6 @@
 </head>
 
 <body>
-
 <div th:replace="layouts/header :: header"> header</div>
 
 <div class="container m-5">
@@ -56,49 +55,47 @@
         <button class="btn btn-primary" type="submit">Créer</button>
     </form>
 
-
-
     <table class="table table-striped table-dark">
         <thead>
         <tr>
             <th scope="col">Nom</th>
-            <th scope="col"></th>
             <th scope="col">Horaire</th>
-            <th scope="col"></th>
             <th scope="col">description</th>
+            <th scope="col">intervenants</th>
             <th></th>
             <th></th>
         </tr>
         </thead>
-        <tbody>
+        <tbody th:object="${event}">
         <tr th:if="${#strings.isEmpty(event.conferences)}">
             <td colspan="3">Aucune conferences pour cet évènement</td>
         </tr>
-        <tr scope="row" th:object="${event}">
-            <td th:each="e: ${event.conferences}" class="d-flex">
-                <span th:text="${e.name}"> nom Conferences </span>
+        <tr scope="row" th:each="c: ${event.conferences}">
+            <td>
+                <span th:text="${c.name}"> nom Conferences </span>
             </td>
-            <td></td>
-            <td th:each="e: ${event.conferences}" class="d-flex">
-                <span th:text="${e.time}"> nom Conferences </span>
+           <td>
+                <span th:text="${c.time}"> nom Conferences </span>
             </td>
-            <td></td>
-            <td th:each="e: ${event.conferences}" class="d-flex">
-                <span th:text="${e.description}"> nom Conferences </span>
+            <td>
+                <span th:text="${c.description}"> nom Conferences </span>
             </td>
-            <td></td>
-            <td th:each="e: ${event.conferences}" class="d-flex">
-                <form action="#" th:action="@{/conferenceUpdate/{id}(id=${e.id})}" th:object="${event}" method="post">
-                     <input name="id" type="hidden" th:value="${e.id}">
-                     <input name="name" type="hidden" th:value="${e.name}">
-                     <input name="time" type="hidden" th:value="${e.time}">
-                     <input name="address" type="hidden" th:value="${e.description}">
+            <td>
+                <!--<span th:text="${c.intervenant}"> Intervenants </span>-->
+                <ul>
+                    <li>intervenants</li>
+                    <li>intervenants</li>
+                    <li>intervenants</li>
+                </ul>
+
+            </td>
+           <td >
+                <form action="#" th:action="@{/conferenceUpdate/{id}(id=${c.id})}" th:object="${event}" method="post">
                      <button class="btn btn-secondary" type="submit" name="deleteItem">Modifier</button>
                  </form>
             </td>
-            <td></td>
-            <td th:each="e: ${event.conferences}" class="d-flex">
-                <form action="#" th:action="@{/deleteConference/{id}(id=${e.id})}" th:object="${conferences}" method="post">
+            <td >
+                <form action="#" th:action="@{/deleteConference/{id}(id=${c.id})}" th:object="${event}" method="post">
                     <button class="btn btn-danger" type="submit" name="deleteItem">Supprimer</button>
                 </form>
             </td>
@@ -106,9 +103,7 @@
         </tr>
         </tbody>
     </table>
-
 </div>
-    <div th:replace="layouts/footer :: footer"> footer</div>
-
+<div th:replace="layouts/footer :: footer"> footer</div>
 </body>
 </html>

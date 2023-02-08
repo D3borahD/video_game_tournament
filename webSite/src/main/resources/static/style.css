@@ -1,0 +1,58 @@
+body {
+    background: linear-gradient(145deg, rgba(0,11,23,1) 0%, rgba(21,46,70,1) 100%);
+    color: #758da6;
+}
+
+p{
+    color: #b9d1e9;
+}
+
+.black{
+    color: rgba(0,11,23,1);
+}
+.black-bg{
+    background-color: rgba(0,11,23,1);
+}
+.event-header{
+    border-bottom: 1px solid  white;
+}
+
+.gray{
+    color: #2b2f33;
+}
+
+.border-header{
+    border-radius: 10px 10px 0 0;
+    border: 2px solid #2b2f33;
+}
+
+.border-radius-card{
+    border-radius: 10px 10px 10px 10px;
+}
+
+.border-radius-bottom{
+    border-radius: 0 0 10px 10px;
+}
+
+.gray-bg{
+    background-color: #2b2f33;
+    padding: 3px;
+}
+
+.darkBlue{
+    color: rgba(21,46,70,1);
+}
+
+.darkBlue-bg{
+    background-color: rgba(21,46,70,1);
+}
+
+.blueMedium{
+    color: #758da6;
+}
+.blueMedium-bg{
+    background-color: #758da6;
+}
+.bluePale {
+    color: #b9d1e9;
+}

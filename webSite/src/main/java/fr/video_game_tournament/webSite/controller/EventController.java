@@ -1,7 +1,9 @@
 package fr.video_game_tournament.webSite.controller;
 
+import fr.video_game_tournament.webSite.model.Competition;
 import fr.video_game_tournament.webSite.model.Conference;
 import fr.video_game_tournament.webSite.model.Event;
+import fr.video_game_tournament.webSite.service.CompetitionService;
 import fr.video_game_tournament.webSite.service.ConferenceService;
 import fr.video_game_tournament.webSite.service.EventService;
 import lombok.Data;
@@ -26,6 +28,8 @@ public class EventController {
     private EventService service;
     @Autowired
     private ConferenceService conferenceService;
+    @Autowired
+    private CompetitionService competitionService;
   /*  private EventController (EventService service) {
         super();
         this.service = service;
@@ -45,6 +49,8 @@ public class EventController {
         model.addAttribute("events", listEvent);
         Iterable<Conference> conferences = conferenceService.getConferences();
         model.addAttribute("conferences", conferences);
+        Iterable<Competition> competitions = competitionService.getCompetitions();
+        model.addAttribute("competitions", competitions);
         return "home";
     }
 
