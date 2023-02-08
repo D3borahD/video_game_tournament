@@ -22,10 +22,7 @@
             <label for="date">Date</label>
             <input class="form-control" id="date"  type="date" name="date" th:value="${date}" required>
         </div>
-        <div class="form-group" >
-            <label for="time">Heure</label>
-            <input type="time" class="form-control" id="time" name="time"  th:value="${time}" required>
-        </div>
+
         </div>
         <div class="form-group">
             <label for="address">Adresse</label>
@@ -39,8 +36,9 @@
         <tr>
             <th scope="col">Nom</th>
             <th scope="col">Date</th>
-            <th scope="col">Heure</th>
             <th scope="col">Adresse</th>
+            <th scope="col">Conferences</th>
+            <th scope="col">Horaire</th>
             <th></th>
             <th></th>
         </tr>
@@ -52,16 +50,21 @@
         <tr scope="row" th:each="e: ${events}">
             <td ><span th:text="${e.name}"> Nom </span></td>
             <td><span th:text="${e.date}"> Date </span></td>
-            <td><span th:text="${e.time}"> Date </span></td>
             <td><span th:text="${e.address}"> Adresse </span></td>
+            <td>
+                <p th:each="c: ${e.conferences}">
+                    <span th:text="${c.name}"> nom Conferences </span>
+                </p>
+            </td>
+            <td>
+                <p th:each="c: ${e.conferences}">
+                    <span th:text="${c.time}"> Conferences horaire </span>
+                </p>
+            </td>
             <td>
                <!-- <a th:href="@{/eventForm/{id}(id=${e.id})}">Modifier</a>-->
             <form action="#" th:action="@{/eventForm/{id}(id=${e.id})}" th:object="${event}" method="post">
                  <input name="id" type="hidden" th:value="${e.id}">
-                 <input name="name" type="hidden" th:value="${e.name}">
-                 <input name="date" type="hidden" th:value="${e.date}">
-                 <input name="time" type="hidden" th:value="${e.time}">
-                 <input name="address" type="hidden" th:value="${e.address}">
                  <button class="btn btn-secondary" type="submit" name="deleteItem">Modifier</button>
              </form>
             </td>

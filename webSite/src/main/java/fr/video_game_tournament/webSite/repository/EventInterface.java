@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Component
-public class EventProxy {
+public class EventInterface {
 
     @Autowired
     private CustomProperties props;
@@ -61,7 +61,6 @@ public class EventProxy {
 
         return response.getBody();
     }
-
 
     /**
      * Add a new event

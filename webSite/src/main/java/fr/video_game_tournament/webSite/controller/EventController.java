@@ -1,6 +1,8 @@
 package fr.video_game_tournament.webSite.controller;
 
+import fr.video_game_tournament.webSite.model.Conference;
 import fr.video_game_tournament.webSite.model.Event;
+import fr.video_game_tournament.webSite.service.ConferenceService;
 import fr.video_game_tournament.webSite.service.EventService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class EventController {
     //dependency injection
     @Autowired
     private EventService service;
+    @Autowired
+    private ConferenceService conferenceService;
   /*  private EventController (EventService service) {
         super();
         this.service = service;
@@ -39,6 +43,8 @@ public class EventController {
     public String events(Model model) {
         Iterable<Event> listEvent = service.getEvents();
         model.addAttribute("events", listEvent);
+        Iterable<Conference> conferences = conferenceService.getConferences();
+        model.addAttribute("conferences", conferences);
         return "home";
     }
 

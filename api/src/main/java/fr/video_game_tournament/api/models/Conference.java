@@ -22,4 +22,7 @@ public class Conference {
 
     private String description;
 
+    private int event_id;
+
+
 }

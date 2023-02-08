@@ -1,7 +1,7 @@
 package fr.video_game_tournament.webSite.service;
 
 import fr.video_game_tournament.webSite.model.Event;
-import fr.video_game_tournament.webSite.repository.EventProxy;
+import fr.video_game_tournament.webSite.repository.EventInterface;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class EventService {
 
     @Autowired
-    private EventProxy eventProxy;
+    private EventInterface eventInterface;
 
 
     public void test() {
@@ -26,15 +26,15 @@ public class EventService {
 
 
     public Event getEvent(final int id){
-        return eventProxy.getEvent(id);
+        return eventInterface.getEvent(id);
     }
 
     public Iterable<Event> getEvents() {
-        return eventProxy.getEvents();
+        return eventInterface.getEvents();
     }
 
     public void deleteEvent(final int id) {
-        eventProxy.deleteEvent(id);;
+        eventInterface.deleteEvent(id);;
     }
 
 
@@ -45,9 +45,9 @@ public class EventService {
         event.setName(event.getName().toUpperCase());
 
         if(event.getId() == null) {
-            savedEvent = eventProxy.createEvent(event);
+            savedEvent = eventInterface.createEvent(event);
         } else {
-            savedEvent = eventProxy.updateEvent(event);
+            savedEvent = eventInterface.updateEvent(event);
         }
         return savedEvent;
     }
