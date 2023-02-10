@@ -25,6 +25,7 @@ public class Competition {
     @Column(name="event_id")
     private int eventId;
 
+
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade={CascadeType.PERSIST}
@@ -32,6 +33,18 @@ public class Competition {
     @JoinColumn(name = "competition_id")
     private List<Team> teams = new ArrayList<>();
 
-
+    @ManyToMany(
+            fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            }
+    )
+    @JoinTable(
+            name = "video_game_competition",
+            joinColumns = @JoinColumn(name = "competition_id"),
+            inverseJoinColumns = @JoinColumn(name = "video_game_id")
+    )
+    private List<VideoGame> videoGames = new ArrayList<>();
 
 }
