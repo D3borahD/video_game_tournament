@@ -26,6 +26,7 @@
             <label for="maxTeam">Nb d'équipe max</label>
             <input type="text" class="form-control" id="maxTeam" placeholder="0" name="maxTeam" th:value="${competition.maxTeam}" required>
         </div>
+
         <div class="form-group align-self-end">
         <button class="btn btn-primary" type="submit">Modifier</button>
         </div>
@@ -54,8 +55,7 @@
                 </p>
             </td>
             <td>
-
-                <form class="m-5 d-flex" action="#" method="post" th:action="@{/saveTeam}" th:object="${team}">
+                <form class="m-5 d-flex" action="#" method="post" th:action="@{/updateRanking}" th:object="${team}">
                     <input class="form-control" id="iddqsd" aria-describedby="nameHelp" placeholder="Entrer un évèvenement" name="id" type="hidden" th:value="${t.id}" required>
 
                     <div class="form-group mr-3">

@@ -11,5 +11,5 @@ public class Conference {
     private String name;
     private LocalTime time;
     private String description;
-    private int event_id;
+    private int eventId;
 }

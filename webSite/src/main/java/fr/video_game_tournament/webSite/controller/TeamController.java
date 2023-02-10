@@ -29,11 +29,21 @@ public class TeamController {
     private EventService eventService;
 
     @GetMapping("/player")
-    public String home (Model model){
+    public String listCompetition (Model model){
         Iterable<Team> listTeam = teamService.getTeams();
         model.addAttribute("teams", listTeam);
-        return "competition/competitionDetail";
+        return "competition/competitionDetail.html";
     }
+
+    @GetMapping("/player/competition")
+    public String listCompet (Model model){
+        Iterable<Team> listTeam = teamService.getTeams();
+        model.addAttribute("teams", listTeam);
+        return "redirect:/player";
+    }
+
+
+
     @GetMapping("/ranking")
     public String rank (Model model){
         Iterable<Team> listTeam = teamService.getTeams();
@@ -45,13 +55,47 @@ public class TeamController {
         return "competition/competitionDetail";
     }
 
-   @GetMapping("/player/subscription")
+        @GetMapping("/player/subscription")
         public String playerRedirect (Model model){
             Iterable<Team> listTeam = teamService.getTeams();
             model.addAttribute("teams", listTeam);
             return "competition/teamSubscriptionForm";
         }
 
+
+
+
+
+//ok
+/*    @PostMapping("/updateRanking")
+    public String updateRankingTeam(@Validated Team newTeam, BindingResult bindingResult, Model model) {
+        teamService.saveTeam(newTeam);
+        List<Team> teams = (List<Team>) teamService.getTeams();
+        model.addAttribute("teams", teams);
+        //return "home.html";
+        //return "admin.competitionUpdateForm.html";
+        return "redirect:/admin";
+        //return "redirect:/player/subscription";
+        //return "competition/playerSubscription";
+        //return "competitionDetail";
+        //return "redirect:/player";
+    }*/
+
+        //test
+   /* @PostMapping("/updateRanking/{id}")
+    public String updateRankingTeam(Model model, @PathVariable("id") final int id) {
+        Team team = teamService.saveTeam(id);
+        List<Team> teams = (List<Team>) teamService.getTeams();
+        model.addAttribute("team", team);
+        //return "home.html";
+        //return "admin.competitionUpdateForm.html";
+        return "redirect:/admin";
+        //return "redirect:/player/subscription";
+        //return "competition/playerSubscription";
+        //return "competitionDetail";
+        //return "redirect:/player";
+
+    }*/
 
     //don't work
     /*@GetMapping("/competition/player/subscription")
@@ -72,7 +116,7 @@ public class TeamController {
 
 
 
-    @PostMapping("/teamRankingUpdate")
+    /*@PostMapping("è")
     public String updateRanking(@Validated Team newTeam, BindingResult bindingResult, Model model) {
         teamService.saveTeam(newTeam);
         List<Team> teams = (List<Team>) teamService.getTeams();
@@ -86,7 +130,7 @@ public class TeamController {
         //return "competition/playerSubscription";
         //return "competition/competitionDetail";
         //return "redirect:/player";
-    }
+    }*/
 
     @PostMapping("/saveTeam")
     public String addTeam(@Validated Team newTeam, BindingResult bindingResult, Model model) {

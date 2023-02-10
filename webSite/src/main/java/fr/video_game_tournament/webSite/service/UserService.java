@@ -1,7 +1,7 @@
 package fr.video_game_tournament.webSite.service;
 
 import fr.video_game_tournament.webSite.model.User;
-import fr.video_game_tournament.webSite.repository.UserProxy;
+import fr.video_game_tournament.webSite.repository.UserInterface;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,33 +11,27 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     @Autowired
-    private UserProxy userProxy;
+    private UserInterface userInterface;
 
     public User getUser(final int id){
-        return userProxy.getUser(id);
+        return userInterface.getUser(id);
     }
 
     public Iterable<User> getUsers() {
-        return userProxy.getUsers();
+        return userInterface.getUsers();
     }
 
     public void deleteUser(final int id) {
-        userProxy.deleteUser(id);;
+        userInterface.deleteUser(id);;
     }
 
     public User saveUser(User user) {
         User savedUser;
-
-        // Règle de gestion : Le nom de famille doit être mis en majuscule.
-        //user.setLastName(employee.getLastName().toUpperCase());
-
         if(user.getId() == null) {
-            // Si l'id est nul, alors c'est un nouvel user.
-            savedUser = userProxy.createUser(user);
+            savedUser = userInterface.createUser(user);
         } else {
-            savedUser = userProxy.updateUser(user);
+            savedUser = userInterface.updateUser(user);
         }
-
         return savedUser;
     }
 }

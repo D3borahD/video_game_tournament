@@ -17,9 +17,7 @@ public class Conference {
     private int id;
 
     private String name;
-
     private LocalTime time;
-
     private String description;
 
    @Column(name="event_id")

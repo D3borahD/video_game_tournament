@@ -1,11 +1,14 @@
 package fr.video_game_tournament.api.controllers;
 
 import fr.video_game_tournament.api.models.Competition;
+import fr.video_game_tournament.api.models.Team;
 import fr.video_game_tournament.api.services.CompetitionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController

@@ -40,7 +40,7 @@ public class EventController {
         public String eventsAdmin(Model model) {
         Iterable<Event> listEvent = service.getEvents();
         model.addAttribute("events", listEvent);
-        return "admin/adminEvent";
+        return "admin/adminEvent.html";
     }
 
     // ?
@@ -52,7 +52,7 @@ public class EventController {
         model.addAttribute("conferences", conferences);
         Iterable<Competition> competitions = competitionService.getCompetitions();
         model.addAttribute("competitions", competitions);
-        return "home";
+        return "home.html";
     }
 
     @PostMapping("/delete/{id}")
@@ -67,7 +67,7 @@ public class EventController {
         Event event = service.getEvent(id);
         model.addAttribute("event", event);
         // "admin/updateEventForm" (dossier/fichier)
-        return "admin/updateEventForm";
+        return "admin/updateEventForm.html";
     }
 
     // ADD NEW OTHER METHODE // YT MODEL
@@ -78,6 +78,7 @@ public class EventController {
         model.addAttribute("events", events);
         // @GetMapping("/admin" => retourne la liste des event) => "admin/adminEvent" (dossier/fichier)
         return "redirect:/admin";
+
     }
 
 

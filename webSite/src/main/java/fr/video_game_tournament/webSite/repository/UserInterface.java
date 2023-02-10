@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Component
-public class UserProxy {
+public class UserInterface {
 
     @Autowired
     private CustomProperties props;
@@ -90,7 +90,7 @@ public class UserProxy {
      */
     public User updateUser(User u) {
         String baseApiUrl = props.getApiUrl();
-        String updateUserUrl = baseApiUrl + "/user/" + u.getId();
+        String updateUserUrl = baseApiUrl + "/users/" + u.getId();
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<User> request = new HttpEntity<User>(u);
@@ -112,7 +112,7 @@ public class UserProxy {
      */
     public void deleteUser(int id) {
         String baseApiUrl = props.getApiUrl();
-        String deleteUserUrl = baseApiUrl + "/user/" + id;
+        String deleteUserUrl = baseApiUrl + "/users/" + id;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Void> response = restTemplate.exchange(

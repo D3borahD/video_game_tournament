@@ -27,8 +27,6 @@ public class ConferenceService {
 
     public Conference saveConference(Conference conference) {
         Conference savedConference;
-        // Functional rule : name must be capitalized.
-        conference.setName(conference.getName().toUpperCase());
         if(conference.getId() == null) {
             savedConference = conferenceInterface.createConference(conference);
         } else {
