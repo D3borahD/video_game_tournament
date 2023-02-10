@@ -3,9 +3,11 @@ package fr.video_game_tournament.webSite.controller;
 import fr.video_game_tournament.webSite.model.Competition;
 import fr.video_game_tournament.webSite.model.Conference;
 import fr.video_game_tournament.webSite.model.Event;
+import fr.video_game_tournament.webSite.model.VideoGame;
 import fr.video_game_tournament.webSite.service.CompetitionService;
 import fr.video_game_tournament.webSite.service.ConferenceService;
 import fr.video_game_tournament.webSite.service.EventService;
+import fr.video_game_tournament.webSite.service.VideoGameService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,6 +32,8 @@ public class EventController {
     private ConferenceService conferenceService;
     @Autowired
     private CompetitionService competitionService;
+    @Autowired
+    private VideoGameService videoGameService;
   /*  private EventController (EventService service) {
         super();
         this.service = service;
@@ -40,6 +44,9 @@ public class EventController {
         public String eventsAdmin(Model model) {
         Iterable<Event> listEvent = service.getEvents();
         model.addAttribute("events", listEvent);
+        // affiche la liste d'evente sur cette page => clean code voir pour migrer vers videogame controller
+        Iterable<VideoGame> videoGames = videoGameService.getVideoGames();
+        model.addAttribute("videoGames", videoGames);
         return "admin/adminEvent.html";
     }
 
@@ -52,6 +59,8 @@ public class EventController {
         model.addAttribute("conferences", conferences);
         Iterable<Competition> competitions = competitionService.getCompetitions();
         model.addAttribute("competitions", competitions);
+        Iterable<VideoGame> videoGames = videoGameService.getVideoGames();
+        model.addAttribute("videoGames", videoGames);
         return "home.html";
     }
 
@@ -66,11 +75,16 @@ public class EventController {
     public String updateEvent(Model model, @PathVariable("id") final int id) {
         Event event = service.getEvent(id);
         model.addAttribute("event", event);
+
+        Iterable<VideoGame> videoGames = videoGameService.getVideoGames();
+        model.addAttribute("videoGames", videoGames);
+
+
+        //VideoGame videoGame = videoGameService.getVideoGame(id);
         // "admin/updateEventForm" (dossier/fichier)
         return "admin/updateEventForm.html";
     }
 
-    // ADD NEW OTHER METHODE // YT MODEL
     @PostMapping("/saveEvent")
     public String addEvent(@Validated Event newEvent, BindingResult bindingResult, Model model) {
         service.saveEvent(newEvent);
@@ -80,31 +94,4 @@ public class EventController {
         return "redirect:/admin";
 
     }
-
-
-
-    // ADD NEW EVENT // NOT USED // IT WORK !!!! OC MODEL
-    /*@PostMapping("/saveEvent")
-    public ModelAndView saveEvent(@ModelAttribute Event event) {
-        if(event.getId() != null) {
-            Event current = service.getEvent(event.getId());
-        }
-        service.saveEvent(event);
-        return new ModelAndView("redirect:/");
-    }*/
-    //
-
-    // DELETE methode get
-    /*@GetMapping("/events/{id}")
-    public String deleteEvent(@PathVariable("id") final int id) {
-        service.deleteEvent(id);
-        return "redirect:/";
-    }*/
-
-    // GET EVENT BY ID // NOT USE AGAIN
-   /*@GetMapping("/eventForm/{id}")
-    public String editEvent(@PathVariable("id") final int id) {
-        service.getEvent(id);
-        return "admin/eventForm";
-    }*/
 }

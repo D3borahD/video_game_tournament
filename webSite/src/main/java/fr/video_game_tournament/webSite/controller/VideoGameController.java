@@ -28,6 +28,15 @@ public class VideoGameController {
         return "admin/videoGamesEdit.html";
     }
 
+    //don't work
+ /*   @GetMapping("/admin/competitionForm")
+    public String videoGameListEditFormCompetition(Model model) {
+        Iterable<VideoGame> videoGames = videoGameService.getVideoGames();
+        model.addAttribute("videoGames", videoGames);
+        return "admin/competitionUpdateForm.html";
+    }*/
+
+
     @PostMapping("/deleteVideoGame/{id}")
     public String deleteVideoGame(@PathVariable("id") final int id) {
         videoGameService.deleteVideoGame(id);

@@ -13,8 +13,12 @@
 <div class="container m-5">
     <h2 th:text="${event.name}">ADMIN Evenements</h2>
 
+
+
     <div>
-        <form class="m-5 d-flex" action="#" method="post" th:action="@{/saveEvent}" th:object="${event}">
+        <form  action="#" method="post" th:action="@{/saveEvent}" th:object="${event}">
+            <fieldset class="m-5 d-flex">
+                <legend>Modifier un évènement </legend>
             <input class="form-control" id="id" aria-describedby="nameHelp" placeholder="Entrer un évèvenement" name="id" type="hidden" th:value="${event.id}" required>
             <div class="form-group mr-3 w-100" >
                 <label for="name">Nom</label>
@@ -31,9 +35,14 @@
             <div class="form-group mr-3 align-self-end">
                 <button class="btn btn-primary" type="submit">Modifier</button>
             </div>
+            </fieldset>
         </form>
 
+
         <form class="m-5 d-flex" action="#" method="post" th:action="@{/saveCompetition}" th:object="${competiton}">
+            <fieldset >
+                <legend>Créer une compétition </legend>
+            <div class="d-flex flex-row">
             <input type="hidden" class="form-control" id="event_id_for_competition" placeholder="event_id" name="eventId" th:value="${event.id}">
             <div class="form-group mr-3 w-100 align-self-end" >
                 <label for="nameConference">Compétition</label>
@@ -47,14 +56,30 @@
                 <label for="description">Nombre d'équipe maximum</label>
                 <input type="text" class="form-control" id="maxTeam" placeholder="maxTeam" name="maxTeam" th:value="${maxTeam}" required>
             </div>
+
+            </div>
+            <fieldset class="m-3">
+                <p>Sélectionner un jeux:</p>
+                <div th:each="v: ${videoGames}">
+                    <input type="radio" id="huey" name="videoGameId" th:value="${v.id}"
+                               checked>
+                    <label th:text="${v.name}" for="huey">Huey</label>
+                </div>
+            </fieldset>
+
+
+
             <div class="form-group mr-3 align-self-end">
                 <button class="btn btn-primary" type="submit">Ajouter</button>
             </div>
+        </fieldset>
         </form>
 
-        <form class="m-5 d-flex" action="#" method="post" th:action="@{/saveConference}" th:object="${conference}">
+        <form  action="#" method="post" th:action="@{/saveConference}" th:object="${conference}">
+            <fieldset class="m-5 d-flex">
+                <legend>Créer une conférence </legend>
             <input type="hidden" class="form-control" id="event_id" placeholder="event_id" name="eventId" th:value="${event.id}">
-            <div class="form-group mr-3 flex-shrink-1" >
+            <div class="form-group mr-3 w-50" >
                 <label for="nameConference">Conference</label>
                 <input class="form-control" id="nameConference" aria-describedby="nameHelp" placeholder="Entrer une conférence" name="name" type="text" th:value="${name}" required>
             </div>
@@ -62,13 +87,14 @@
                 <label for="time">Heure</label>
                 <input type="time" class="form-control" id="time" name="time"  th:value="${time}" required>
             </div>
-            <div class="form-group mr-3 w-100">
+            <div class="form-group mr-3  w-50">
                 <label for="description">Description</label>
                 <input type="textarea" class="form-control" id="description" placeholder="description" name="description" th:value="${description}" required>
             </div>
             <div class="form-group mr-3 align-self-end">
                 <button class="btn btn-primary" type="submit">Ajouter</button>
             </div>
+            </fieldset>
         </form>
     </div>
 
@@ -79,7 +105,6 @@
             <th scope="col">Nom</th>
             <th scope="col">Nombre de joueurs par équipe</th>
             <th scope="col">Nombre d'équipe maximum</th>
-            <th scope="col">Équipes inscrites</th>
             <th></th>
             <th></th>
         </tr>
@@ -97,14 +122,6 @@
             </td>
             <td>
                 <span th:text="${c.maxTeam}"> nom Conferences </span>
-            </td>
-            <td>
-                <!--<span th:text="${c.intervenant}"> Intervenants </span>-->
-                <ul>
-                    <li>team</li>
-                    <li>team</li>
-                    <li>team</li>
-                </ul>
             </td>
            <td >
                <form action="#" th:action="@{/competitionUpdate/{id}(id=${c.id})}" th:object="${event}" method="post">

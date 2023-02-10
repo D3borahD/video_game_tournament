@@ -83,6 +83,10 @@ public class CompetitionController {
             if(eventId != 0){
                 currentCompetition.setEventId(eventId);
             }
+            int videoGameId = competition.getVideoGameId();
+            if(videoGameId != 0){
+                currentCompetition.setVideoGameId(videoGameId);
+            }
             competitionService.saveCompetition(currentCompetition);
             return currentCompetition;
         }

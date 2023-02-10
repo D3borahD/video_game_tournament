@@ -3,9 +3,11 @@ package fr.video_game_tournament.webSite.controller;
 import fr.video_game_tournament.webSite.model.Competition;
 import fr.video_game_tournament.webSite.model.Event;
 import fr.video_game_tournament.webSite.model.Team;
+import fr.video_game_tournament.webSite.model.VideoGame;
 import fr.video_game_tournament.webSite.service.CompetitionService;
 import fr.video_game_tournament.webSite.service.EventService;
 import fr.video_game_tournament.webSite.service.TeamService;
+import fr.video_game_tournament.webSite.service.VideoGameService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +30,8 @@ public class CompetitionController {
     private EventService eventService;
     @Autowired
     private TeamService teamService;
+    @Autowired
+    private VideoGameService videoGameService;
 
 
     @GetMapping("/competition")
@@ -53,6 +57,8 @@ public class CompetitionController {
         model.addAttribute("competitions", competitions);
         Iterable<Team> listTeam = teamService.getTeams();
         model.addAttribute("teams", listTeam);
+        Iterable<VideoGame> videoGames = videoGameService.getVideoGames();
+        model.addAttribute("videoGames", videoGames);
         return "admin/competitionRanking";
        // return "admin/competitionUpdateForm";
     }

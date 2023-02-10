@@ -13,7 +13,7 @@ public class Competition {
     private int nbPlayerByTeam;
     private int maxTeam;
     private int eventId;
+    private int videoGameId;
     private List<Team> teams = new ArrayList<>();
-    private List<VideoGame> videoGames = new ArrayList<>();
 
 }
