@@ -14,5 +14,6 @@ public class Competition {
     private int maxTeam;
     private int eventId;
     private List<Team> teams = new ArrayList<>();
+    private List<VideoGame> videoGames = new ArrayList<>();
 
 }
