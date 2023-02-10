@@ -25,16 +25,10 @@ public class ConferenceService {
         conferenceInterface.deleteConference(id);;
     }
 
-
     public Conference saveConference(Conference conference) {
         Conference savedConference;
-
-      /*  System.out.println( "servode"+ id);*/
         // Functional rule : name must be capitalized.
         conference.setName(conference.getName().toUpperCase());
-        /*conference.setEvent_id(id);*/
-
-       /* System.out.println( "bis"+ conference.getEvent_id());*/
         if(conference.getId() == null) {
             savedConference = conferenceInterface.createConference(conference);
         } else {
@@ -42,5 +36,4 @@ public class ConferenceService {
         }
         return savedConference;
     }
-
 }

@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Slf4j
 @Component
-public class TeamProxy {
+public class TeamInterface {
     @Autowired
     private CustomProperties props;
 
@@ -90,7 +90,7 @@ public class TeamProxy {
      */
     public Team updateTeam(Team t) {
         String baseApiUrl = props.getApiUrl();
-        String updateUrl = baseApiUrl + "/team/" + t.getId();
+        String updateUrl = baseApiUrl + "/teams/" + t.getId();
 
         RestTemplate restTemplate = new RestTemplate();
         HttpEntity<Team> request = new HttpEntity<Team>(t);
@@ -112,7 +112,7 @@ public class TeamProxy {
      */
     public void deleteTeam(int id) {
         String baseApiUrl = props.getApiUrl();
-        String deleteUrl = baseApiUrl + "/team/" + id;
+        String deleteUrl = baseApiUrl + "/teams/" + id;
 
         RestTemplate restTemplate = new RestTemplate();
         ResponseEntity<Void> response = restTemplate.exchange(

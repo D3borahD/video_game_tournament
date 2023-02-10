@@ -44,7 +44,7 @@ public class ConferenceController {
         return "redirect:/admin/conference";
     }
 
-    @PostMapping("/conferenceUpdate/{id}")
+  @PostMapping("/conferenceUpdate/{id}")
     public String updateEvent(Model model, @PathVariable("id") final int id) {
         Conference conference = conferenceService.getConference(id);
         model.addAttribute("conference", conference);

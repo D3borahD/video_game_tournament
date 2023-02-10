@@ -65,19 +65,11 @@ public class UserController {
         if(u.isPresent()){
             User currentUser = u.get();
 
-            String firstname = user.getFirstname();
-            if (firstname != null) {
-                currentUser.setFirstname(firstname);
-            }
-            String lastname = user.getLastname();
-            if (lastname != null) {
-                currentUser.setLastname(lastname);
+            String username = user.getUsername();
+            if (username != null) {
+                currentUser.setUsername(username);
             }
 
-            String phoneNumber = user.getPhoneNumber();
-            if (phoneNumber != null) {
-                currentUser.setPhoneNumber(phoneNumber);
-            }
             String email = user.getEmail();
             if (email != null) {
                 currentUser.setEmail(email);
@@ -86,10 +78,14 @@ public class UserController {
             if (password != null) {
                 currentUser.setPassword(password);
             }
-            String role = user.getRole();
-            if (role != null) {
-                currentUser.setRole(role);
+            int roleId = user.getRoleId();
+            if (roleId != 0) {
+                currentUser.setRoleId(roleId);
             }
+          /*  boolean enabled = user.getEnabled();
+            if (enabled != true) {
+                currentUser.setEnabled(enabled);
+            }*/
             userService.saveUser(currentUser);
             return currentUser;
         }

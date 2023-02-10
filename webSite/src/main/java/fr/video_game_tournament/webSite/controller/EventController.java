@@ -43,6 +43,7 @@ public class EventController {
         return "admin/adminEvent";
     }
 
+    // ?
     @GetMapping("/")
     public String events(Model model) {
         Iterable<Event> listEvent = service.getEvents();
@@ -57,6 +58,7 @@ public class EventController {
     @PostMapping("/delete/{id}")
     public String deleteEvent(@PathVariable("id") final int id) {
         service.deleteEvent(id);
+        // @GetMapping("/admin" => retourne la liste des event) => "admin/adminEvent" (dossier/fichier)
         return "redirect:/admin";
     }
 
@@ -64,6 +66,7 @@ public class EventController {
     public String updateEvent(Model model, @PathVariable("id") final int id) {
         Event event = service.getEvent(id);
         model.addAttribute("event", event);
+        // "admin/updateEventForm" (dossier/fichier)
         return "admin/updateEventForm";
     }
 
@@ -73,8 +76,10 @@ public class EventController {
         service.saveEvent(newEvent);
         List<Event> events = (List<Event>) service.getEvents();
         model.addAttribute("events", events);
+        // @GetMapping("/admin" => retourne la liste des event) => "admin/adminEvent" (dossier/fichier)
         return "redirect:/admin";
     }
+
 
 
     // ADD NEW EVENT // NOT USED // IT WORK !!!! OC MODEL

@@ -1,7 +1,7 @@
 package fr.video_game_tournament.webSite.service;
 
 import fr.video_game_tournament.webSite.model.Team;
-import fr.video_game_tournament.webSite.repository.TeamProxy;
+import fr.video_game_tournament.webSite.repository.TeamInterface;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,31 +11,28 @@ import org.springframework.stereotype.Service;
 public class TeamService {
 
     @Autowired
-    private TeamProxy teamProxy;
+    private TeamInterface teamInterface;
 
     public Team getTeam(final int id){
-        return teamProxy.getTeam(id);
+        return teamInterface.getTeam(id);
     }
 
-
     public Iterable<Team> getTeams() {
-        return teamProxy.getTeams();
+        return teamInterface.getTeams();
     }
 
     public void deleteTeam(final int id) {
-        teamProxy.deleteTeam(id);;
+        teamInterface.deleteTeam(id);;
     }
 
     public Team saveTeam(Team team) {
         Team savedTeam;
 
         if(team.getId() == null) {
-            // Si l'id est nul, alors c'est une nouvelle team.
-            savedTeam = teamProxy.createTeam(team);
+            savedTeam = teamInterface.createTeam(team);
         } else {
-            savedTeam = teamProxy.updateTeam(team);
+            savedTeam = teamInterface.updateTeam(team);
         }
-
         return savedTeam;
     }
 }

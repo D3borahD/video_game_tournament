@@ -25,5 +25,4 @@ public class Conference {
    @Column(name="event_id")
     private int eventId;
 
-
 }

@@ -16,6 +16,10 @@ public class Team {
     private int id;
 
     private String name;
+    private int ranking;
+
+    @Column(name = "competition_id")
+    private  int competitionId;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
@@ -30,6 +34,4 @@ public class Team {
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
     private List<User> users = new ArrayList<>();
-
-
 }

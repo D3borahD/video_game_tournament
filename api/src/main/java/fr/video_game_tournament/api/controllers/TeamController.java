@@ -1,12 +1,14 @@
 package fr.video_game_tournament.api.controllers;
 
 import fr.video_game_tournament.api.models.Team;
+import fr.video_game_tournament.api.models.User;
 import fr.video_game_tournament.api.models.VideoGame;
 import fr.video_game_tournament.api.services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -68,15 +70,26 @@ public class TeamController {
         if(t.isPresent()) {
             Team currentTeam = t.get();
 
-            String name = team.getName();
+           String name = team.getName();
             if(name != null){
                 currentTeam.setName(name);
             }
 
-            /*String image = team.getImage();
-            if(image != null){
-                currentTeam.setImage(image);
-            }*/
+            int ranking = team.getRanking();
+            if(ranking != 0){
+                currentTeam.setRanking(ranking);
+            }
+
+            int competitionId = team.getCompetitionId();
+            if(competitionId != 0){
+                currentTeam.setCompetitionId(competitionId);
+            }
+
+            List<User> users = team.getUsers();
+            if(users != null){
+                currentTeam.setUsers(users);
+            }
+
             teamService.saveTeam(currentTeam);
             return currentTeam;
         }

@@ -3,6 +3,9 @@ package fr.video_game_tournament.api.models;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "competition")
@@ -21,4 +24,14 @@ public class Competition {
 
     @Column(name="event_id")
     private int eventId;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade={CascadeType.PERSIST}
+    )
+    @JoinColumn(name = "competition_id")
+    private List<Team> teams = new ArrayList<>();
+
+
+
 }

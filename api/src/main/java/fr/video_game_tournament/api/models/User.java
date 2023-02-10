@@ -17,16 +17,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String firstname;
-    private String lastname;
-
-    @Column(name = "phone_number")
-    private String phoneNumber;
-
+    private String username;
     private String email;
     private String password;
-    private String role;
-    private String username;
+    @Column(name = "role_id")
+    private int roleId;
+    //private Boolean enabled;
+
 
     /*@ManyToMany(
             fetch = FetchType.LAZY,

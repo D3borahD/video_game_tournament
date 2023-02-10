@@ -76,10 +76,6 @@ public class EventController {
             if(date != null){
                 currentEvent.setDate(date);
             }
-            LocalTime time = event.getTime();
-            if(time != null){
-                currentEvent.setTime(time);
-            }
             String address = event.getAddress();
             if(address != null){
                 currentEvent.setAddress(address);

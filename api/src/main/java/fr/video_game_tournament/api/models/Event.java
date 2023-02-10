@@ -20,7 +20,6 @@ public class Event {
 
     private String name;
     private LocalDate date;
-    private LocalTime time;
     private String address;
 
     @OneToMany(
@@ -39,4 +38,11 @@ public class Event {
     )
     @JoinColumn(name = "event_id")
     private List<Competition> competitions = new ArrayList<>();
+
+  /*  @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade={CascadeType.PERSIST}
+    )
+    @JoinColumn(name = "event_id")
+    private List<Team> teams = new ArrayList<>();*/
 }
