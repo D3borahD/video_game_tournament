@@ -1,18 +1,14 @@
 package fr.video_game_tournament.webSite.model;
 
-import jakarta.validation.constraints.Size;
 import lombok.Data;
-
-import javax.validation.constraints.NotNull;
 
 
 @Data
 public class LoginModel {
 
-    @NotNull
     private String email;
-    @NotNull
-    @Size(min =8, max = 15, message = "Le mot de passe doit contenir entre 8 et 15 charactères")
+    //@NotNull
+    //@Size(min =8, max = 15, message = "Le mot de passe doit contenir entre 8 et 15 charactères")
     private String password;
 
     public LoginModel() {
