@@ -1,17 +1,43 @@
 package fr.video_game_tournament.webSite.model;
 
-
+import jakarta.validation.constraints.Size;
 import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+
+
 @Data
 public class LoginModel {
 
+    @NotNull
+    private String email;
+    @NotNull
+    @Size(min =8, max = 15, message = "Le mot de passe doit contenir entre 8 et 15 charactères")
+    private String password;
 
-    public String getUsername() {
-        return username;
+    public LoginModel() {
+        super();
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public LoginModel(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginModel{" +
+                "email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -21,26 +47,4 @@ public class LoginModel {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public LoginModel(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
-
-    public LoginModel() {
-        super();
-    }
-
-    private String username;
-    private String password;
-
-
-    @Override
-    public String toString() {
-        return "LoginModel{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
 }

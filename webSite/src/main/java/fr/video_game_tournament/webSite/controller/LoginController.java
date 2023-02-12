@@ -1,9 +1,13 @@
 package fr.video_game_tournament.webSite.controller;
 
-import fr.video_game_tournament.webSite.model.User;
+import fr.video_game_tournament.webSite.model.LoginModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.validation.Valid;
 
 //@RestController
 @Controller
@@ -14,18 +18,23 @@ public class LoginController {
 
     @GetMapping("/login")
     public String displayLoginForm(Model model){
-        User user = new User();
-        model.addAttribute("loginModel", user);
-        return "loginForm.html";
+        model.addAttribute("loginModel", new LoginModel());
+        return "login/loginForm.html";
     }
 
 
 
-   /* @PostMapping("/processLogin")
-    public String processLogin(LoginModel loginModel, Model model){
-      //  model.addAttribute("userModel", loginModel);
-        return "loginResult";
-    }*/
+    @PostMapping("/processLogin")
+    public String processLogin(@Valid LoginModel loginModel, BindingResult bindingResult, Model model){
+
+        if(bindingResult.hasErrors()){
+            model.addAttribute("loginModel", loginModel);
+            return "logginForm.html";
+        }
+
+        model.addAttribute("userModel", loginModel);
+        return "login/loginResult";
+    }
 
  /*   @RequestMapping("/*")
     @RolesAllowed("USER")
