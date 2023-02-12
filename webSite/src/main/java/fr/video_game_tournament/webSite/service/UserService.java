@@ -17,6 +17,13 @@ public class UserService {
         return userInterface.getUser(id);
     }
 
+    public User findByEmail(String email){
+        {
+            return userInterface.getUserByEmail(email);
+        }
+    }
+            ;
+
     public Iterable<User> getUsers() {
         return userInterface.getUsers();
     }
@@ -27,7 +34,7 @@ public class UserService {
 
     public User saveUser(User user) {
         User savedUser;
-        if(user.getId() == null) {
+        if(user.getId() == 0) {
             savedUser = userInterface.createUser(user);
         } else {
             savedUser = userInterface.updateUser(user);

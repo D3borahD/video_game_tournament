@@ -61,6 +61,26 @@ public class UserInterface {
         return response.getBody();
     }
 
+
+    //test
+    public User getUserByEmail(String email) {
+        String baseApiUrl = props.getApiUrl();
+        String getUserUrl = baseApiUrl + "/users/" + email;
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<User> response = restTemplate.exchange(
+                getUserUrl,
+                HttpMethod.GET,
+                null,
+                User.class
+        );
+
+        log.debug("Get User call " + response.getStatusCode().toString());
+
+        return response.getBody();
+    }
+
+
     /**
      * Add a new user
      * @param u A new user (without an id)

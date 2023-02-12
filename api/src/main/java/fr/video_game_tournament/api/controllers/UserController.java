@@ -54,6 +54,22 @@ public class UserController {
     }
 
     /**
+     * Read - Get one user
+     * @param email The id of the user
+     * @return An User object full filled
+     */
+    @GetMapping("/users/{email}")
+    public User getUserByEmail(@PathVariable("email") final String email){
+        Optional<User> user = userService.getUserByEmail(email);
+        if(user.isPresent()){
+            return user.get();
+        }
+        else {
+            return null;
+        }
+    }
+
+    /**
      * Update - Update an existing user
      * @param id - The id of the user to update
      * @param user - The user object updated
@@ -78,10 +94,7 @@ public class UserController {
             if (password != null) {
                 currentUser.setPassword(password);
             }
-            int roleId = user.getRoleId();
-            if (roleId != 0) {
-                currentUser.setRoleId(roleId);
-            }
+
           /*  boolean enabled = user.getEnabled();
             if (enabled != true) {
                 currentUser.setEnabled(enabled);
