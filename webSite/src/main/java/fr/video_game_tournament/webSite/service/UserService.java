@@ -28,6 +28,7 @@ public class UserService {
     public User saveUser(User user) {
         User savedUser;
         if(user.getId() == null) {
+
             savedUser = userInterface.createUser(user);
         } else {
             savedUser = userInterface.updateUser(user);

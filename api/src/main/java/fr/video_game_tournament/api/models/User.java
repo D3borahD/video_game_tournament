@@ -24,8 +24,10 @@ public class User {
     //@Column(nullable = false, lenght = 64)
     private String password;
     @Column(name = "role_id")
-    private int roleId;
+    private int roleId = 2;
     //private Boolean enabled;
+
+
 
 
     /*@ManyToMany(

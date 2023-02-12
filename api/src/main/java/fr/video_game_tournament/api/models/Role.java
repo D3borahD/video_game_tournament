@@ -17,7 +17,7 @@ public class Role {
     private int id;
     private String name;
 
-    @OneToMany(
+/*    @OneToMany(
             fetch = FetchType.LAZY,
             // ON DELETE and ON UPDATE => SET NULL
             cascade={CascadeType.PERSIST}
@@ -25,6 +25,6 @@ public class Role {
             //cascade = CascadeType.ALL
     )
     @JoinColumn(name = "id")
-    private List<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();*/
 
 }

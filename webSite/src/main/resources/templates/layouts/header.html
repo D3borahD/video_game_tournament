@@ -1,7 +1,8 @@
-<div th:fragment="header">
+<div th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
     <nav class="navbar navbar-expand-lg navbar-dark gray-bg p-3">
         <a class="navbar-brand" th:href="@{/}">Navbar</a>
-        <ul class="navbar-nav mr-auto d-flex flex-row">
+       <!-- <ul sec:authorize="hasAuthority('ADMIN')" class="navbar-nav mr-auto d-flex flex-row">-->
+       <ul class="navbar-nav mr-auto d-flex flex-row">
             <li class="nav-item active">
                 <a class="nav-link" th:href="@{/}">Accueil <span class="sr-only">(current)</span></a>
             </li>
@@ -14,12 +15,16 @@
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/admin/video_gameEdit}">Jeux</a>
             </li>
+           <li class="nav-item">
+               <a class="nav-link" th:href="@{/admin/user}">Utilisateurs</a>
+           </li>
         </ul>
+        <!--<ul sec:authorize="isAnonymous()">-->
         <ul>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/login}">Se connecter</a>
             </li>
-            <li class="nav-item">
+            <li   class="nav-item">
                 <a class="nav-link" th:href="@{/register}">S'inscrire</a>
             </li>
         </ul>

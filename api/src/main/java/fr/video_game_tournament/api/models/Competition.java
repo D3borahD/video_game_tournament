@@ -28,7 +28,6 @@ public class Competition {
     @Column(name="video_game_id")
     private int videoGameId;
 
-
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade={CascadeType.PERSIST}

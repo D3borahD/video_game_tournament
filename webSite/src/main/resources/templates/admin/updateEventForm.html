@@ -57,9 +57,9 @@
             <fieldset class="m-auto">
                 <p>Sélectionner un jeux:</p>
                 <div th:each="v: ${videoGames}">
-                    <input type="radio" id="huey" name="videoGameId" th:value="${v.id}"
+                    <input type="radio" id="videoGame" name="videoGameId" th:value="${v.id}"
                                checked>
-                    <label th:text="${v.name}" for="huey">Huey</label>
+                    <label th:text="${v.name}" for="videoGame">jeux vidéo</label>
                 </div>
             </fieldset>
             <div class="form-group ml-auto mr-3">

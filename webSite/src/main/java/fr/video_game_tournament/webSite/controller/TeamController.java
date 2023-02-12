@@ -61,6 +61,8 @@ public class TeamController {
             return "competition/teamSubscriptionForm";
         }
 
+    //saveScore
+    //get value input
 
 //ok
     @PostMapping("/updateRanking")
