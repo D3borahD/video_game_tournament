@@ -43,7 +43,6 @@ public class TeamController {
     }
 
 
-
     @GetMapping("/ranking")
     public String rank (Model model){
         Iterable<Team> listTeam = teamService.getTeams();
@@ -63,11 +62,8 @@ public class TeamController {
         }
 
 
-
-
-
 //ok
-/*    @PostMapping("/updateRanking")
+    @PostMapping("/updateRanking")
     public String updateRankingTeam(@Validated Team newTeam, BindingResult bindingResult, Model model) {
         teamService.saveTeam(newTeam);
         List<Team> teams = (List<Team>) teamService.getTeams();
@@ -79,7 +75,7 @@ public class TeamController {
         //return "competition/playerSubscription";
         //return "competitionDetail";
         //return "redirect:/player";
-    }*/
+    }
 
         //test
    /* @PostMapping("/updateRanking/{id}")
@@ -138,12 +134,9 @@ public class TeamController {
         List<Team> teams = (List<Team>) teamService.getTeams();
         model.addAttribute("teams", teams);
         return "home";
-
         //return "redirect:/player/subscription";
-
         //return "competition/playerSubscription";
         //return "competitionDetail";
         //return "redirect:/player";
-
     }
 }
