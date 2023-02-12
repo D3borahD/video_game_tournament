@@ -73,25 +73,14 @@ public class TeamController {
             model.addAttribute("teams", listTeam);
             return "competition/teamSubscriptionForm";
         }
-
-    //saveScore
-    //get value input
-
-//ok
+        
     @PostMapping("/updateRanking")
     public String updateRankingTeam(@Validated Team newTeam, BindingResult bindingResult, Model model) {
         teamService.saveTeam(newTeam);
         List<Team> teams = (List<Team>) teamService.getTeams();
         model.addAttribute("teams", teams);
-        //return "home.html";
-        //return "admin.competitionUpdateForm.html";
-        return "redirect:/admin";
-        //return "redirect:/player/subscription";
-        //return "competition/playerSubscription";
-        //return "competitionDetail";
-        //return "redirect:/player";
+        return "redirect:/admin/competition/ranking";
     }
-
 
     @PostMapping("updateTeam/{id}")
     public String updateTeam(Model model, @PathVariable("id") final int id) {
