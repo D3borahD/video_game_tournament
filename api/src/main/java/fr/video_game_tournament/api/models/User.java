@@ -18,7 +18,10 @@ public class User {
     private int id;
 
     private String username;
+
+    //@Column(nullable = false, unique = true)
     private String email;
+    //@Column(nullable = false, lenght = 64)
     private String password;
     @Column(name = "role_id")
     private int roleId;
