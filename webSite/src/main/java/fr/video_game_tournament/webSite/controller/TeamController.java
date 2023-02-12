@@ -3,9 +3,11 @@ package fr.video_game_tournament.webSite.controller;
 import fr.video_game_tournament.webSite.model.Competition;
 import fr.video_game_tournament.webSite.model.Event;
 import fr.video_game_tournament.webSite.model.Team;
+import fr.video_game_tournament.webSite.model.User;
 import fr.video_game_tournament.webSite.service.CompetitionService;
 import fr.video_game_tournament.webSite.service.EventService;
 import fr.video_game_tournament.webSite.service.TeamService;
+import fr.video_game_tournament.webSite.service.UserService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -23,6 +26,9 @@ import java.util.List;
 public class TeamController {
     @Autowired
     private TeamService teamService;
+
+    @Autowired
+    private UserService userService;
     @Autowired
     private CompetitionService competitionService;
     @Autowired
@@ -40,6 +46,13 @@ public class TeamController {
         Iterable<Team> listTeam = teamService.getTeams();
         model.addAttribute("teams", listTeam);
         return "redirect:/player";
+    }
+
+    @GetMapping("/team")
+    public String listCTeam (Model model){
+        Iterable<Team> listTeam = teamService.getTeams();
+        model.addAttribute("teams", listTeam);
+        return "team/teamForm.html";
     }
 
 
@@ -79,66 +92,39 @@ public class TeamController {
         //return "redirect:/player";
     }
 
-        //test
-   /* @PostMapping("/updateRanking/{id}")
-    public String updateRankingTeam(Model model, @PathVariable("id") final int id) {
-        Team team = teamService.saveTeam(id);
-        List<Team> teams = (List<Team>) teamService.getTeams();
-        model.addAttribute("team", team);
-        //return "home.html";
-        //return "admin.competitionUpdateForm.html";
-        return "redirect:/admin";
-        //return "redirect:/player/subscription";
-        //return "competition/playerSubscription";
-        //return "competitionDetail";
-        //return "redirect:/player";
 
-    }*/
-
-    //don't work
-    /*@GetMapping("/competition/player/subscription")
-    public String playerRedirect (Model model){
+    @PostMapping("updateTeam/{id}")
+    public String updateTeam(Model model, @PathVariable("id") final int id) {
         Iterable<Team> listTeam = teamService.getTeams();
         model.addAttribute("teams", listTeam);
-        return "redirect:/player";
-    }*/
 
+        Iterable<User> listUser = userService.getUsers();
+        model.addAttribute("users", listUser);
 
- /*   @GetMapping("/competitionDetail/{id}")
-    public String getInformationCompetition(Model model, @PathVariable("id") final int id) {
-        Competition competition = competitionService.getCompetition(id);
-        model.addAttribute("competition", competition);
-        return "competition/competitionDetail";
-    }*/
-
-
-
-
-    /*@PostMapping("è")
-    public String updateRanking(@Validated Team newTeam, BindingResult bindingResult, Model model) {
-        teamService.saveTeam(newTeam);
-        List<Team> teams = (List<Team>) teamService.getTeams();
-
-        model.addAttribute("teams", teams);
-        //return "/admin/competitionUpdateForm";
-        return "home";
-        //return "redirect:/admin/competition/ranking";
-        //return "redirect:/admin/competition/ranking";
-        //return "redirect:/player/subscription";
-        //return "competition/playerSubscription";
-        //return "competition/competitionDetail";
-        //return "redirect:/player";
-    }*/
+        //VideoGame videoGame = videoGameService.getVideoGame(id);
+        // "admin/updateEventForm" (dossier/fichier)
+        return "redirect:/team";
+    }
 
     @PostMapping("/saveTeam")
     public String addTeam(@Validated Team newTeam, BindingResult bindingResult, Model model) {
        teamService.saveTeam(newTeam);
-        List<Team> teams = (List<Team>) teamService.getTeams();
-        model.addAttribute("teams", teams);
-        return "home";
+       /* List<Team> teams = (List<Team>) teamService.getTeams();
+        model.addAttribute("teams", teams);*/
+        Iterable<Team> listTeam = teamService.getTeams();
+        model.addAttribute("teams", listTeam);
+
+        return "/competition/teamSubscriptionForm.html";
         //return "redirect:/player/subscription";
         //return "competition/playerSubscription";
         //return "competitionDetail";
         //return "redirect:/player";
+    }
+
+    @PostMapping("/deleteTeam/{id}")
+    public String deleteTeam(@PathVariable("id") final int id) {
+        teamService.deleteTeam(id);
+        // @GetMapping("/admin" => retourne la liste des event) => "admin/adminEvent" (dossier/fichier)
+        return "redirect:/team";
     }
 }

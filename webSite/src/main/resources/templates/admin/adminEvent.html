@@ -14,64 +14,6 @@
     <h2>Evenements - Admin</h2>
 
 
-
-
-
-<!--
-
-    <fieldset>
-        <legend>Sélectionner un jeux:</legend>
-        <div th:each="v: ${videoGames}">
-            <input type="radio" id="huey" name="drone" th:value="${v.id}"
-                   checked>
-            <label th:text="${v.name}" for="huey">Huey</label>
-        </div>
-    </fieldset>
-
-    <table class="table table-striped table-dark w-50 mx-auto">
-
-        <tbody>
-        <tr th:if="${#strings.isEmpty(videoGames)}">
-            <td colspan="3">Aucun évènement à venir</td>
-        </tr>
-        <tr scope="row" th:each="v: ${videoGames}">
-            &lt;!&ndash;<td><span th:text="${v.name}"> Nom </span></td>&ndash;&gt;
-            <td >
-                <form class="d-flex align-items-center" action="#" th:action="@{/saveVideoGame}" th:object="${videoGames}" method="post">
-                    <input name="id" type="hidden" th:value="${v.id}">
-                    <div class="form-group mr-3" >
-                        &lt;!&ndash; <label for="videoGameName">Nom</label>&ndash;&gt;
-                        <input class="form-control" id="videoGameName" aria-describedby="nameHelp" placeholder="" name="name" type="text" th:value="${v.name}" required>
-                    </div>
-                    <button class="btn btn-secondary align-self-start" type="submit" name="updateItem">Modifier</button>
-                </form>
-            </td>
-            <td>
-                <form action="#" th:action="@{/deleteVideoGame/{id}(id=${v.id})}" th:object="${videoGames}" method="post">
-                    <button class="btn btn-danger" type="submit" name="deleteItem">Supprimer</button>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-
-
-
--->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
    <form class="m-5 d-flex" action="#" method="post" th:action="@{/saveEvent}" th:object="${event}">
         <div class="form-group mr-3 w-50" >
             <label for="name">Nom</label>

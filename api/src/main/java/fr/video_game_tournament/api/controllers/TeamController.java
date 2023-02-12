@@ -69,27 +69,22 @@ public class TeamController {
         Optional<Team> t = teamService.getTeamById(id);
         if(t.isPresent()) {
             Team currentTeam = t.get();
-
-           String name = team.getName();
+            String name = team.getName();
             if(name != null){
                 currentTeam.setName(name);
             }
-
             int ranking = team.getRanking();
             if(ranking != 0){
                 currentTeam.setRanking(ranking);
             }
-
             int competitionId = team.getCompetitionId();
             if(competitionId != 0){
                 currentTeam.setCompetitionId(competitionId);
             }
-
             List<User> users = team.getUsers();
             if(users != null){
                 currentTeam.setUsers(users);
             }
-
             teamService.saveTeam(currentTeam);
             return currentTeam;
         }

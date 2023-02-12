@@ -79,7 +79,6 @@ public class EventController {
         Iterable<VideoGame> videoGames = videoGameService.getVideoGames();
         model.addAttribute("videoGames", videoGames);
 
-
         //VideoGame videoGame = videoGameService.getVideoGame(id);
         // "admin/updateEventForm" (dossier/fichier)
         return "admin/updateEventForm.html";
