@@ -73,7 +73,7 @@ public class TeamController {
             model.addAttribute("teams", listTeam);
             return "competition/teamSubscriptionForm";
         }
-        
+
     @PostMapping("/updateRanking")
     public String updateRankingTeam(@Validated Team newTeam, BindingResult bindingResult, Model model) {
         teamService.saveTeam(newTeam);

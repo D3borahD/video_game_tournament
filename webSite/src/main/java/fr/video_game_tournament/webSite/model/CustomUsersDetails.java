@@ -1,3 +1,4 @@
+
 package fr.video_game_tournament.webSite.model;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -48,3 +49,5 @@ public class CustomUsersDetails implements UserDetails {
         return true;
     }
 }
+
+

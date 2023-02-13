@@ -1,4 +1,4 @@
-package fr.video_game_tournament.webSite.configuration;
+/*package fr.video_game_tournament.webSite.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -33,9 +33,9 @@ public class SpringSecurityConfig {
                 .roles("USER", "ADMIN")
                 .build();
         return new InMemoryUserDetailsManager(user, admin);
-    }
+    }*/
 
-    @Bean
+/*    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         // autorize the request at the requestMatchers
         http.authorizeHttpRequests(
@@ -55,4 +55,4 @@ public class SpringSecurityConfig {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-}
+}*/

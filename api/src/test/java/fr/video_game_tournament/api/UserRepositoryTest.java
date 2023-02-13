@@ -22,6 +22,7 @@ public class UserRepositoryTest {
     @Autowired
     private TestEntityManager entityManager;
 
+    //TEST OK
 /*    @Test
     public void testCreateUser() {
         User user = new User();
@@ -36,4 +37,24 @@ public class UserRepositoryTest {
 
         assertThat(existUser.getEmail()).isEqualTo(user.getEmail());
     }*/
+
+    //TEST OK
+    @Test
+    public void testFindUserByEmail() {
+        String email = "test@email.com";
+
+        User user = userRepository.findByEmail(email);
+
+        assertThat(user).isNotNull();
+    }
+
+    //TEST FAIL
+    @Test
+    public void testFindUserByEmailFaille() {
+        String email = "jeNeSuisPasUnEmailEnBaseDeDonnee@email.com";
+
+        User user = userRepository.findByEmail(email);
+
+        assertThat(user).isNotNull();
+    }
 }
