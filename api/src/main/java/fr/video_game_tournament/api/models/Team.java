@@ -21,7 +21,7 @@ public class Team {
     @Column(name = "competition_id")
     private  int competitionId;
 
-    @ManyToMany(
+   /* @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {
                     CascadeType.PERSIST,
@@ -33,5 +33,5 @@ public class Team {
             joinColumns = @JoinColumn(name = "team_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<User> users = new ArrayList<>();
+    private List<User> users = new ArrayList<>();*/
 }

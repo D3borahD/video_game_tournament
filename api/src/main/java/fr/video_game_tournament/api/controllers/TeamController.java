@@ -81,10 +81,10 @@ public class TeamController {
             if(competitionId != 0){
                 currentTeam.setCompetitionId(competitionId);
             }
-            List<User> users = team.getUsers();
+           /* List<User> users = team.getUsers();
             if(users != null){
                 currentTeam.setUsers(users);
-            }
+            }*/
             teamService.saveTeam(currentTeam);
             return currentTeam;
         }
