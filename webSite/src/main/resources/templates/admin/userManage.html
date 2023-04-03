@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<div th:replace="layouts/header :: header"> header</div>
+
+<div class="container m-5">
+    <h2>Gestion des utilisateurs </h2>
+
+   <table class="table table-striped table-dark w-50 mx-auto m-5">
+        <thead>
+        <tr>
+            <th scope="col">Nom</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${#strings.isEmpty(users)}">
+            <td colspan="3">Aucun évènement à venir</td>
+        </tr>
+        <tr scope="row" th:each="u: ${users}">
+            <td >
+                <form class="d-flex align-items-center justify-content-between" action="#" th:action="@{/saveRoleUser}" th:object="${users}" method="post">
+                    <input name="id" type="hidden" th:value="${u.id}">
+                    <p th:text="${u.username}"></p>
+                    <div class="form-group mr-3 d-flex flex-row" >
+                   <fieldset class="m-auto">
+                        <div th:each="r: ${roles}">
+                            <input type="radio" id="role" name="roleId" th:value="${r.id}"
+                                   checked>
+                            <label th:text="${r.name}" for="role">Role</label>
+                        </div>
+                    </fieldset>
+                    <button class="btn btn-secondary align-self-start ml-3" type="submit" name="updateItem">Modifier</button>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form action="#" th:action="@{/deleteUser/{id}(id=${u.id})}" th:object="${users}" method="post">
+                    <button class="btn btn-danger" type="submit" name="deleteItem">Supprimer</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+<div th:replace="layouts/footer :: footer"> footer</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+</body>
+</html>

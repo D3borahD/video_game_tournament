@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<div th:replace="layouts/header :: header"> header</div>
+
+
+<div class="container m-auto">
+
+    <h1>Inscription</h1>
+    <form class="m-5 w-50" action="#" method="post" th:action="@{processRegister}" th:object="${user}">
+        <div class="form-group mb-3">
+            <label for="username">Nom d'utilisateur</label>
+            <input th:value="${username}" type="text" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Nom d'utilisateur" name="username" required>
+        </div>
+        <div class="form-group mb-3">
+            <label for="email">Email</label>
+            <input th:value="${email}" type="email" class="form-control" id="email" aria-describedby="usernameHelp" placeholder="Entrer votre email" name="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input th:value="${password}" type="password" class="form-control" id="password" placeholder="Mot de passe" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
+
+</div>
+<div th:replace="layouts/footer :: footer"> footer</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+
+</body>
+</html>
